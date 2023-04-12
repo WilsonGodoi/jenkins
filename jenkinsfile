@@ -5,11 +5,9 @@ stage 'Checkout'
  }
 
  stage('Create Tag') {
-            steps {
                 script {
                     gitTag(createTagVersion('test'))
                 }
-            }
         }
 
 def createTagVersion(String environment){
