@@ -11,7 +11,7 @@ def createTagVersion(String environment){
        // def appVersion = sh(returnStdout: true, script: "npm version")
         node {
   echo "qwerty"
-  echo appVersion
+ // echo appVersion
 }
     return "1.0.0-" + "${gitCommitHash}-fe-" + "${environment}"
 }
