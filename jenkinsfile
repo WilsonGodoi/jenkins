@@ -1,13 +1,14 @@
 stage 'Checkout'
  node() {
   deleteDir()
+  def appVersion = sh(returnStdout: true, script: "npm version")
   checkout scm
   createTagVersion('test')
  }
 
 def createTagVersion(String environment){
         def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
-        def appVersion = sh(returnStdout: true, script: "npm version")
+       // def appVersion = sh(returnStdout: true, script: "npm version")
         node {
   echo "qwerty"
   echo appVersion
