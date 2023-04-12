@@ -1,14 +1,11 @@
-stage('Checkout Repository') {
-            steps{
-                script{
-                    deleteDir()
-                    checkout scm
-                }
-            }
-        }
+stage 'Checkout'
+ node('slave') {
+  deleteDir()
+  checkout scm
+ }
 
-def createTagVersion(String environment){
-        def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
-        // def appVersion = sh(returnStdout: true, script: "npm version")
-    return "1.0.0-" + "${gitCommitHash}-fe-" + "${environment}"
-}
+// def createTagVersion(String environment){
+//         def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
+//         // def appVersion = sh(returnStdout: true, script: "npm version")
+//     return "1.0.0-" + "${gitCommitHash}-fe-" + "${environment}"
+// }
