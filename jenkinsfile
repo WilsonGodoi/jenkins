@@ -1,0 +1,13 @@
+pipeline {
+    agent {label 'jaws-slaves||jaws-dynamic-slaves'}
+    environment {
+        environment = 'test'
+        tagVersion = createTagVersion(env.environment)
+    }
+}
+
+def createTagVersion(String environment){
+        def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
+        //def appVersion = sh(returnStdout: true, script: "npm version")
+    return "1.0.0-" + "${gitCommitHash}-fe-" + "${environment}"
+}
