@@ -1,8 +1,8 @@
 stage 'Checkout'
  node() {
   deleteDir()
-  createTagVersion('test')
   checkout scm
+  createTagVersion('test')
  }
 
 def createTagVersion(String environment){
