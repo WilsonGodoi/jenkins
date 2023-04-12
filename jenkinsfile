@@ -1,10 +1,8 @@
-pipeline {
-    agent {label 'jaws-slaves||jaws-dynamic-slaves'}
-    environment {
-        environment = 'test'
-        tagVersion = createTagVersion(env.environment)
-    }
-}
+stage 'Checkout'
+ node('slave') {
+  deleteDir()
+  checkout scm
+ }
 
 def createTagVersion(String environment){
         def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
