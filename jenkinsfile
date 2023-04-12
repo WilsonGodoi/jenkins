@@ -8,6 +8,8 @@ stage 'Checkout'
 def createTagVersion(String environment){
         def gitCommitHash = (sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true))[0..10]
         // def appVersion = sh(returnStdout: true, script: "npm version")
-        log.info "Create tag locally"
+        node {
+  echo "qwerty"
+}
     return "1.0.0-" + "${gitCommitHash}-fe-" + "${environment}"
 }
